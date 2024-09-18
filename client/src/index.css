@@ -1,4 +1,9 @@
 body{
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(23, 24, 44);
   color: rgb(210, 210, 195)
+}
+.modal-dark{
+  color: white !important;
+  background-color: rgb(19, 19, 74);
+  border-color: black;
 }

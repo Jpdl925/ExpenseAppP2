@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import ExpenseList from './expense-tracker/components/ExpenseList'
 import axios from 'axios'
 import { BASE_URL } from './constant'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export interface Expense {
   id: number;
