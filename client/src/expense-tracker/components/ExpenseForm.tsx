@@ -1,15 +1,54 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { Expense } from "../../App";
+import axios from "axios";
+import { BASE_URL } from "../../constant";
 
-const ExpenseForm = () => {
+interface ExpenseFormProps {
+  fetchExpense: () => void;
+  currentData?: Expense;
+  breakEdit: () => void;
+  show: boolean;
+  handleClose: () => void;
+  handleShow: () => void;
+}
 
-    const addExpense = () => {
+const ExpenseForm = ({
+  fetchExpense,
+  currentData,
+  breakEdit,
+  show,
+  handleClose,
+  handleShow
+}: ExpenseFormProps) => {
 
-    }
+  const [curData, setCurData] = useState<Expense>();
+  
+  const [expense, setExpense] = useState({
+    id: currentData?.id || 0,
+    description: currentData?.description || "",
+    amount: currentData?.amount || 0,
+    category: currentData?.category || "",
+  });
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+  const addExpense = () => {
+    axios
+      .post(BASE_URL + "Expense", expense)
+      .then(() => {
+        handleClose();
+        fetchExpense();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(expense);
+    setExpense({} as Expense)
+  };
+
+
+
+
 
   return (
     <>
@@ -23,23 +62,42 @@ const ExpenseForm = () => {
         </Modal.Header>
         <Modal.Body className="modal-dark">
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
-              <Form.Control />
+              <Form.Control
+                id="description"
+                type="text"
+                className="form-control"
+                value={currentData ? expense.description : ""}
+                onChange={(e) =>
+                  setExpense({ ...expense, description: e.target.value })
+                }
+              />
             </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+
+            <Form.Group className="mb-3">
               <Form.Label>Amount</Form.Label>
-              <Form.Control />
+              <Form.Control
+                id="amount"
+                type="text"
+                className="form-control"
+                value={expense.amount}
+                onChange={(e) =>
+                  setExpense({ ...expense, amount: parseInt(e.target.value) })
+                }
+              />
             </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+
+            <Form.Group className="mb-3">
               <Form.Label>Category</Form.Label>
-              <Form.Select>
+              <Form.Select
+                id="category"
+                className="form-control"
+                value={expense.category}
+                onChange={(e) =>
+                  setExpense({ ...expense, category: e.target.value })
+                }
+              >
                 <option>Select a Category</option>
                 <option>Groceries</option>
                 <option>Utilities</option>
@@ -54,7 +112,7 @@ const ExpenseForm = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={addExpense}>
             Save Changes
           </Button>
         </Modal.Footer>

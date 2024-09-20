@@ -4560,11 +4560,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jtpg9\\OneDrive\\Documents\\Academy\\ExpenseAppP2\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\jtpg9\\Documents\\Academy\\Level4\\Projects\\ExpenseAppP2\\ExpenseAppP2\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\jtpg9\\OneDrive\\Documents\\Academy\\ExpenseAppP2\\API\\API.csproj",
+      "projectPath": "C:\\Users\\jtpg9\\Documents\\Academy\\Level4\\Projects\\ExpenseAppP2\\ExpenseAppP2\\API\\API.csproj",
       "packagesPath": "C:\\Users\\jtpg9\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jtpg9\\OneDrive\\Documents\\Academy\\ExpenseAppP2\\API\\obj\\",
+      "outputPath": "C:\\Users\\jtpg9\\Documents\\Academy\\Level4\\Projects\\ExpenseAppP2\\ExpenseAppP2\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jtpg9\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4638,7 +4638,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
